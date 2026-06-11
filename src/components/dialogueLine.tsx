@@ -15,6 +15,10 @@ export default function DialogueLine({ line }: { line: DialogueLineData }) {
     default: "text-yellow-700",
   };
 
+  if (!line) {
+    return <></>;
+  }
+
   return (
     <div className="flex py-3 font-bold">
       {line.speakers.map((item, index) => {

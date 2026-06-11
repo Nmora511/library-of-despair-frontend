@@ -10,7 +10,7 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
   const [filePath, setFilePath] = useState<string>("/agatha.jpg");
 
   useEffect(() => {
-    const path = `/${entry.line.speakers[0].id}.jpg`;
+    const path = `/${entry.line.speakers[0]?.id}.jpg`;
 
     fetch(path, { method: "HEAD" })
       .then((res) => {
@@ -56,11 +56,11 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
               &nbsp;{entry.moment.episodeName} - #{entry.moment.episodeNumber}
             </p>
             <p className="font-bold ml-3 text-yellow-700">Momento:</p>
-            <p>&nbsp;{timeStringFormatter(entry.moment.time)}</p>
+            <p>&nbsp;{timeStringFormatter(entry.moment.timestamp)}</p>
           </div>
           <YoutubePreview
             videoId={entry.moment.videoId}
-            time={entry.moment.time}
+            timestamp={entry.moment.timestamp}
           />
         </div>
       </div>
