@@ -1,13 +1,13 @@
 interface YoutubePreviewProps {
   videoId: string;
-  time: number;
+  timestamp: number;
 }
 
 export default function YoutubePreview({
   videoId,
-  time,
+  timestamp,
 }: YoutubePreviewProps): React.JSX.Element {
-  const embedUrl = `https://youtube.com/embed/${videoId}?start=${time}`;
+  const embedUrl = `https://youtube.com/embed/${videoId}?start=${timestamp}`;
 
   return (
     <div className="flex-1 h-auto max-h-full min-h-0 max-w-full min-w-0 aspect-video bg-black rounded-xl cursor-pointer">
