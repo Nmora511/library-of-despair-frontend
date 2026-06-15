@@ -18,7 +18,7 @@ type Speaker = {
 
 type SeriesMoment = {
   videoId: string;
-  time: number;
+  timestamp: number;
   episodeName: string;
   episodeNumber: number;
   seasonName: string;
