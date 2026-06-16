@@ -67,9 +67,9 @@ export default function Home() {
         {isSearchLoading ? (
           <p>Loading...</p>
         ) : (
-          searchEntries.map((item, index) => (
-            <SearchEntry entry={item} key={index} />
-          ))
+          searchEntries
+            .slice(0, 10)
+            .map((item, index) => <SearchEntry entry={item} key={index} />)
         )}
       </div>
     </main>
