@@ -56,9 +56,6 @@ export default function Home() {
           setValue={setSearchText}
           onChange={handleChange}
         />
-        {/*<button className="bg-yellow-700 p-4 font-bold rounded-xl">
-          Pesquisar
-        </button>*/}
       </section>
       <div className="flex flex-col gap-3 h-full w-[92%] text-xl text-start">
         <h1 className="w-full border-b border-foreground font-bold">
