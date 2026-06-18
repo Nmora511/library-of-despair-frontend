@@ -15,7 +15,7 @@ export default function YoutubePreview({
 
   if (videoId !== prevVideo.videoId || timestamp !== prevVideo.timestamp) {
     setIsLoaded(false);
-    setPrevVideo({ videoId, timestamp }); // Atualiza a referência anterior
+    setPrevVideo({ videoId, timestamp });
   }
 
   return (
