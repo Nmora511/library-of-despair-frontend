@@ -14,12 +14,13 @@ export default function Home() {
   );
   const [isSearchLoading, setIsSearchLoading] = useState<boolean>(false);
 
-  const startSearchQuery = async () => {
+  const startSearchQuery = async (queryText: string) => {
+    // setCurrentPage(1);
     setIsSearchLoading(true);
 
     try {
       const response: AxiosResponse<SearchEntryData[]> = await api.get(
-        `/line?query=${searchText}`,
+        `/line?query=${queryText}`,
       );
       setIsSearchLoading(false);
       setSearchEntries(response.data);
@@ -28,15 +29,23 @@ export default function Home() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
+  const handleUpdateSearchText = (newValue: string) => {
+    setSearchText(newValue);
 
-    if (searchText == "") {
+    if (newValue.trim() === "") {
       setSearchEntries([]);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextText = e.target.value;
+    handleUpdateSearchText(nextText);
+
+    if (nextText.trim() === "") {
       return;
     }
 
-    startSearchQuery();
+    startSearchQuery(nextText);
   };
   return (
     <main className="flex flex-col flex-1 gap-2 items-center font-sans w-full h-full">
@@ -53,7 +62,7 @@ export default function Home() {
         </div>
         <SearchBar
           value={searchText}
-          setValue={setSearchText}
+          setValue={handleUpdateSearchText}
           onChange={handleChange}
         />
       </section>

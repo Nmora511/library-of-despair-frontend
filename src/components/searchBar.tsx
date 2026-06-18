@@ -8,7 +8,7 @@ const MotionCloseIcon = motion.create(RiCloseLargeLine);
 const MotionMagnifierIcon = motion.create(SlMagnifier);
 
 interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
-  setValue: Dispatch<SetStateAction<string>>;
+  setValue: (value: string) => void;
 }
 
 export default function SearchBar({
