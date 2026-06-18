@@ -68,17 +68,17 @@ export default function ReportModal({
         <button>
           <ToolTip tooltipText="Reportar">
             <MotionAttentionIcon
-              size="1.7rem"
+              size="1.5rem"
               whileHover={{ scale: 1.3 }}
-              className="cursor-pointer"
+              className="cursor-pointer mx-2"
             />
           </ToolTip>
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-sm bg-background animate-in zoom-in-90 duration-200">
+      <DialogContent className="sm:max-w-sm bg-background animate-in zoom-in-90 duration-200 border-(--modal-primary) border shadow-[0_0_50px_rgba(214,107,0,0.75)]">
         <form className="space-y-4" onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle className="font-bold text-(--golden)">
+            <DialogTitle className="font-bold text-(--modal-primary)">
               Reportar Falha na Transcrição
             </DialogTitle>
             <DialogDescription>
@@ -95,7 +95,7 @@ export default function ReportModal({
             }
             type="text"
             placeholder="Digite sua sugestão aqui"
-            className="outline-(--golden)"
+            className="outline-(--modal-primary)"
           />
           <DialogFooter>
             <DialogClose asChild>
@@ -109,7 +109,7 @@ export default function ReportModal({
             </DialogClose>
             <Button
               disabled={isLoading}
-              className="cursor-pointer bg-(--golden) hover:bg-(--dark-golden)"
+              className="cursor-pointer bg-(--modal-primary) hover:bg-(--dark-modal-primary)"
               variant="secondary"
               type="submit"
             >
