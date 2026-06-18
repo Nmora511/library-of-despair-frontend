@@ -5,6 +5,7 @@ import { SearchEntryData } from "@/types/apiTypes";
 import YoutubePreview from "./youtubePreview";
 import { timeStringFormatter } from "@/utils/stringFormatter";
 import { useEffect, useState } from "react";
+import ReportModal from "./reportModal";
 
 export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
   const [filePath, setFilePath] = useState<string>("/agatha.jpg");
@@ -40,6 +41,12 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
           <DialogueLine line={entry.lineBefore} />
           <DialogueLine line={entry.line} />
           <DialogueLine line={entry.lineAfter} />
+        </div>
+        <div className="relative h-full items-start top-2 right-1">
+          <ReportModal
+            lineNumber={entry.line.number}
+            episodeId={entry.moment.episodeId}
+          />
         </div>
         <div
           className="
