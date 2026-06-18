@@ -64,8 +64,8 @@ function DialogContent({
       <DialogOverlay />
       <DialogPrimitive.Content asChild>
         <motion.div
-          initial={{ scale: 0.8, x: "-50%", y: "-50%" }}
-          animate={{ scale: 1, x: "-50%", y: "-50%" }}
+          initial={{ scale: 0.9, x: "-50%", y: "-50%" }}
+          animate={{ scale: 1.3, x: "-50%", y: "-50%" }}
           transition={{ duration: 0.2 }}
           data-slot="dialog-content"
           className={cn(
