@@ -2,8 +2,14 @@
 
 import { DialogueLineData } from "@/types/apiTypes";
 import { capitalizeFirstLetter } from "@/utils/stringFormatter";
+import ReportModal from "./reportModal";
 
-export default function DialogueLine({ line }: { line: DialogueLineData }) {
+export default function DialogueLine({
+  line,
+  episodeId,
+}: {
+  line: DialogueLineData;
+} & { episodeId: string }) {
   const nameColorPerCharacterName: Record<string, string> = {
     Agatha: "text-red-800",
     Arthur: "text-[#09fd44]",
@@ -20,7 +26,7 @@ export default function DialogueLine({ line }: { line: DialogueLineData }) {
   }
 
   return (
-    <div className="flex py-3 font-bold">
+    <div className="flex w-full py-3 font-bold">
       {line.speakers.map((item, index) => {
         const textColorCss: string =
           item.id in nameColorPerCharacterName
@@ -41,6 +47,7 @@ export default function DialogueLine({ line }: { line: DialogueLineData }) {
       })}
       <p>:&nbsp;</p>
       <p className="font-normal">{capitalizeFirstLetter(line.text)}</p>
+      <ReportModal lineNumber={line.number} episodeId={episodeId} />
     </div>
   );
 }
