@@ -6,7 +6,6 @@ import Image from "next/image";
 import SearchBar from "@/components/searchBar";
 import { AxiosResponse } from "axios";
 import api from "@/utils/api";
-import ReportModal from "@/components/reportModal";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -15,17 +14,18 @@ export default function Home() {
   );
   const [isSearchLoading, setIsSearchLoading] = useState<boolean>(false);
 
-  const startSearchQuery = () => {
+  const startSearchQuery = async () => {
     setIsSearchLoading(true);
-    api
-      .get(`/search?query=${searchText}`)
-      .then((response: AxiosResponse<SearchEntryData[]>) => {
-        setIsSearchLoading(false);
-        setSearchEntries(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    try {
+      const response: AxiosResponse<SearchEntryData[]> = await api.get(
+        `/line?query=${searchText}`,
+      );
+      setIsSearchLoading(false);
+      setSearchEntries(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
