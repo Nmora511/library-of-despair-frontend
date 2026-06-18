@@ -90,19 +90,23 @@ export default function Home() {
         )}
       </div>
       <footer className="flex justify-center items-center gap-2 p-5">
-        {Array.from({ length: 10 }).map((_, index) => (
-          <motion.button
-            whileHover={{ scale: 1.3 }}
-            key={index}
-            onClick={() => {
-              setCurrentPage(index + 1);
-              scrollToTop();
-            }}
-            className={`flex items-center justify-center w-4 h-4 m-1 cursor-pointer rounded-2xl p-3 ${currentPage == index + 1 ? "bg-(--golden)" : ""}`}
-          >
-            <p className="font-bold">{index + 1}</p>
-          </motion.button>
-        ))}
+        {searchEntries.length === 0 ? (
+          <></>
+        ) : (
+          Array.from({ length: 10 }).map((_, index) => (
+            <motion.button
+              whileHover={{ scale: 1.3 }}
+              key={index}
+              onClick={() => {
+                setCurrentPage(index + 1);
+                scrollToTop();
+              }}
+              className={`flex items-center justify-center w-4 h-4 m-1 cursor-pointer rounded-2xl p-3 ${currentPage == index + 1 ? "bg-(--golden)" : ""}`}
+            >
+              <p className="font-bold">{index + 1}</p>
+            </motion.button>
+          ))
+        )}
       </footer>
     </main>
   );
