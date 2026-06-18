@@ -17,7 +17,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const startSearchQuery = async (queryText: string) => {
-    // setCurrentPage(1);
+    setCurrentPage(1);
     setIsSearchLoading(true);
 
     try {
