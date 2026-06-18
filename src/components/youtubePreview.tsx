@@ -22,7 +22,7 @@ export default function YoutubePreview({
     <div className="flex-1 h-auto max-h-full min-h-0 max-w-full min-w-0 aspect-video bg-black rounded-xl cursor-pointer">
       {!isLoaded && (
         <div className="h-full w-full flex items-center justify-center rounded-xl  bg-zinc-800 z-10">
-          <div className="w-8 h-8 border-4 border-t-(--golden) border-neutral-700 rounded-full animate-spin"></div>
+          <div className="w-8 h-8 border-4 border-t-(--primary) border-neutral-700 rounded-full animate-spin"></div>
         </div>
       )}
 

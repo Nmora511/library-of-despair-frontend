@@ -17,7 +17,7 @@ export default function SearchBar({
   setValue,
 }: SearchBarProps) {
   return (
-    <section className="flex gap-3 items-center bg-zinc-50 text-background rounded-4xl w-full h-13 border-(--golden) border-[0.3rem]">
+    <section className="flex gap-3 items-center bg-zinc-50 text-background rounded-4xl w-full h-13 border-(--primary) border-[0.3rem]">
       <input
         className="pl-4 outline-0 rounded-4xl text-lg w-full h-full"
         value={value}

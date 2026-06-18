@@ -101,7 +101,7 @@ export default function Home() {
                 setCurrentPage(index + 1);
                 scrollToTop();
               }}
-              className={`flex items-center justify-center w-4 h-4 m-1 cursor-pointer rounded-2xl p-3 ${currentPage == index + 1 ? "bg-(--golden)" : ""}`}
+              className={`flex items-center justify-center w-4 h-4 m-1 cursor-pointer rounded-2xl p-3 ${currentPage == index + 1 ? "bg-(--primary)" : ""}`}
             >
               <p className="font-bold">{index + 1}</p>
             </motion.button>

@@ -25,8 +25,8 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
   }, [entry.line.speakers]);
 
   return (
-    <div className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--golden) border-[0.3rem] rounded-lg">
-      <div className="relative h-full w-45 border-(--golden) border-r-[0.3rem] shrink-0 overflow-hidden">
+    <div className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--primary) border-[0.3rem] rounded-lg">
+      <div className="relative h-full w-45 border-(--primary) border-r-[0.3rem] shrink-0 overflow-hidden">
         <Image
           className="object-cover"
           fill
@@ -38,31 +38,31 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
       </div>
       <div className="w-full h-full flex items-center justify-between">
         <div className="ml-5">
-          <DialogueLine line={entry.lineBefore} />
-          <DialogueLine line={entry.line} />
-          <DialogueLine line={entry.lineAfter} />
-        </div>
-        <div className="relative h-full items-start top-2 right-1">
-          <ReportModal
-            lineNumber={entry.line.number}
+          <DialogueLine
+            line={entry.lineBefore}
+            episodeId={entry.moment.episodeId}
+          />
+          <DialogueLine line={entry.line} episodeId={entry.moment.episodeId} />
+          <DialogueLine
+            line={entry.lineAfter}
             episodeId={entry.moment.episodeId}
           />
         </div>
         <div
           className="
-          h-full min-w-120 max-w-150 py-2 pl-2 mr-5 flex flex-col justify-center items-center gap-2 shrink-0 overflow-hidden border-(--golden) border-l-[0.3rem]
+          h-full min-w-120 max-w-150 py-2 pl-2 mr-5 flex flex-col justify-center items-center gap-2 shrink-0 overflow-hidden border-(--primary) border-l-[0.3rem]
           "
         >
           <div className="flex">
-            <p className="font-bold text-(--golden)">Temporada:</p>
+            <p className="font-bold text-(--primary)">Temporada:</p>
             <p>&nbsp;{entry.moment.seasonName}</p>
           </div>
           <div className="flex">
-            <p className="font-bold text-(--golden)">Episódio:</p>
+            <p className="font-bold text-(--primary)">Episódio:</p>
             <p>
               &nbsp;{entry.moment.episodeName} - #{entry.moment.episodeNumber}
             </p>
-            <p className="font-bold ml-3 text-(--golden)">Momento:</p>
+            <p className="font-bold ml-3 text-(--primary)">Momento:</p>
             <p>
               &nbsp;
               {timeStringFormatter(Math.trunc(entry.moment.timestamp / 1000))}
