@@ -6,6 +6,7 @@ import Image from "next/image";
 import SearchBar from "@/components/searchBar";
 import { AxiosResponse } from "axios";
 import api from "@/utils/api";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -13,6 +14,7 @@ export default function Home() {
     [],
   );
   const [isSearchLoading, setIsSearchLoading] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const startSearchQuery = async (queryText: string) => {
     // setCurrentPage(1);
@@ -47,6 +49,15 @@ export default function Home() {
 
     startSearchQuery(nextText);
   };
+
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <main className="flex flex-col flex-1 gap-2 items-center font-sans w-full h-full">
       <section className="flex items-center justify-center gap-4 w-[92%] h-full mt-6">
@@ -74,10 +85,25 @@ export default function Home() {
           <p>Loading...</p>
         ) : (
           searchEntries
-            .slice(0, 10)
+            .slice((currentPage - 1) * 10, currentPage * 10)
             .map((item, index) => <SearchEntry entry={item} key={index} />)
         )}
       </div>
+      <footer className="flex justify-center items-center gap-2 p-5">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <motion.button
+            whileHover={{ scale: 1.3 }}
+            key={index}
+            onClick={() => {
+              setCurrentPage(index + 1);
+              scrollToTop();
+            }}
+            className={`flex items-center justify-center w-4 h-4 m-1 cursor-pointer rounded-2xl p-3 ${currentPage == index + 1 ? "bg-(--golden)" : ""}`}
+          >
+            <p className="font-bold">{index + 1}</p>
+          </motion.button>
+        ))}
+      </footer>
     </main>
   );
 }
