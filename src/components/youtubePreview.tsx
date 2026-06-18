@@ -7,7 +7,8 @@ export default function YoutubePreview({
   videoId,
   timestamp,
 }: YoutubePreviewProps): React.JSX.Element {
-  const embedUrl = `https://youtube.com/embed/${videoId}?start=${timestamp}`;
+  console.log(timestamp);
+  const embedUrl = `https://youtube.com/embed/${videoId}?start=${Math.trunc(timestamp / 1000)}`;
 
   return (
     <div className="flex-1 h-auto max-h-full min-h-0 max-w-full min-w-0 aspect-video bg-black rounded-xl cursor-pointer">

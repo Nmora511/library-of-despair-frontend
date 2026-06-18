@@ -24,8 +24,8 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
   }, [entry.line.speakers]);
 
   return (
-    <div className="flex items-center w-full min-h-45 h-68 bg-background border-yellow-700 border-[0.3rem] rounded-lg">
-      <div className="relative h-full w-45 border-yellow-700 border-r-[0.3rem] shrink-0 overflow-hidden">
+    <div className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--golden) border-[0.3rem] rounded-lg">
+      <div className="relative h-full w-45 border-(--golden) border-r-[0.3rem] shrink-0 overflow-hidden">
         <Image
           className="object-cover"
           fill
@@ -43,20 +43,23 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
         </div>
         <div
           className="
-          h-full min-w-120 max-w-150 py-2 pl-2 mr-5 flex flex-col justify-center items-center gap-2 shrink-0 overflow-hidden border-yellow-700 border-l-[0.3rem]
+          h-full min-w-120 max-w-150 py-2 pl-2 mr-5 flex flex-col justify-center items-center gap-2 shrink-0 overflow-hidden border-(--golden) border-l-[0.3rem]
           "
         >
           <div className="flex">
-            <p className="font-bold text-yellow-700">Temporada:</p>
+            <p className="font-bold text-(--golden)">Temporada:</p>
             <p>&nbsp;{entry.moment.seasonName}</p>
           </div>
           <div className="flex">
-            <p className="font-bold text-yellow-700">Episódio:</p>
+            <p className="font-bold text-(--golden)">Episódio:</p>
             <p>
               &nbsp;{entry.moment.episodeName} - #{entry.moment.episodeNumber}
             </p>
-            <p className="font-bold ml-3 text-yellow-700">Momento:</p>
-            <p>&nbsp;{timeStringFormatter(entry.moment.timestamp)}</p>
+            <p className="font-bold ml-3 text-(--golden)">Momento:</p>
+            <p>
+              &nbsp;
+              {timeStringFormatter(Math.trunc(entry.moment.timestamp / 1000))}
+            </p>
           </div>
           <YoutubePreview
             videoId={entry.moment.videoId}
