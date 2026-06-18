@@ -7,6 +7,8 @@ export type SearchEntryData = {
 };
 
 export type DialogueLineData = {
+  number: number;
+  time: number;
   speakers: Array<Speaker>;
   text: string;
 };
@@ -21,6 +23,13 @@ type SeriesMoment = {
   timestamp: number;
   episodeName: string;
   episodeNumber: number;
+  episodeId: string;
   seasonName: string;
   thumbnailUrl: string;
+};
+
+export type ReportedIssue = {
+  episodeId: string;
+  lineNumber: number;
+  suggestion: string;
 };
