@@ -7,9 +7,10 @@ import ReportModal from "./reportModal";
 export default function DialogueLine({
   line,
   episodeId,
+  isMainLine = false,
 }: {
   line: DialogueLineData;
-} & { episodeId: string }) {
+} & { episodeId: string; isMainLine?: boolean }) {
   const nameColorPerCharacterName: Record<string, string> = {
     Agatha: "text-red-800",
     Arthur: "text-[#09fd44]",
@@ -26,7 +27,9 @@ export default function DialogueLine({
   }
 
   return (
-    <div className="flex w-full py-3 font-bold">
+    <div
+      className={`flex w-full py-3 font-bold ${isMainLine ? "opacity-100" : "opacity-60"}`}
+    >
       {line.speakers.map((item, index) => {
         const textColorCss: string =
           item.id in nameColorPerCharacterName
@@ -40,13 +43,13 @@ export default function DialogueLine({
         }
 
         return (
-          <p key={index} className={textColorCss}>
+          <span key={index} className={textColorCss}>
             {item.name}
-          </p>
+          </span>
         );
       })}
-      <p>:&nbsp;</p>
-      <p className="font-normal">{capitalizeFirstLetter(line.text)}</p>
+      <span>:&nbsp;</span>
+      <span className="font-normal">{capitalizeFirstLetter(line.text)}</span>
       <ReportModal lineNumber={line.number} episodeId={episodeId} />
     </div>
   );
