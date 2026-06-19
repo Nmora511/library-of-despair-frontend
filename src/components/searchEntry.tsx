@@ -3,26 +3,41 @@ import Image from "next/image";
 import DialogueLine from "./dialogueLine";
 import { SearchEntryData } from "@/types/apiTypes";
 import YoutubePreview from "./youtubePreview";
+import rawSpeakerIdMap from "@/lib/speaker-id-map.json";
 import { timeStringFormatter } from "@/utils/stringFormatter";
 import { useEffect, useState } from "react";
-import ReportModal from "./reportModal";
+import { SpeakerIdMapItem } from "@/types/mapTypes";
+
+const speakerIdMap = rawSpeakerIdMap as Record<string, SpeakerIdMapItem>;
 
 export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
-  const [filePath, setFilePath] = useState<string>("/agatha.jpg");
+  const defaultPhotoPath: string = "/speakers/unknown.png";
+  const [filePath, setFilePath] = useState<string>(defaultPhotoPath);
 
   useEffect(() => {
-    const path = `/${entry.line.speakers[0]?.id}.jpg`;
+    const speakerImageUrl = speakerIdMap[entry.line.speakers[0]?.id]?.imageUrl;
 
+    if (
+      speakerImageUrl === undefined ||
+      speakerImageUrl === null ||
+      speakerImageUrl === ""
+    ) {
+      return;
+    }
+    const path = "/speakers/" + speakerImageUrl;
+
+    console.log("Tentando puxar: " + path);
     fetch(path, { method: "HEAD" })
       .then((res) => {
         if (res.ok) {
           setFilePath(path);
+          console.log("Carregou: " + path);
         } else {
-          setFilePath("/agatha.jpg");
+          setFilePath(defaultPhotoPath);
         }
       })
-      .catch(() => setFilePath("/agatha.jpg"));
-  }, [entry.line.speakers]);
+      .catch(() => setFilePath(defaultPhotoPath));
+  }, [entry]);
 
   return (
     <div className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--primary) border-[0.3rem] rounded-lg">
@@ -32,8 +47,7 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
           fill
           sizes="200px"
           src={filePath}
-          alt="Foto da Agatha"
-          loading="eager"
+          alt="Foto Locutor"
         />
       </div>
       <div className="w-full h-full flex items-center justify-between">
@@ -42,7 +56,11 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
             line={entry.lineBefore}
             episodeId={entry.moment.episodeId}
           />
-          <DialogueLine line={entry.line} episodeId={entry.moment.episodeId} />
+          <DialogueLine
+            line={entry.line}
+            isMainLine={true}
+            episodeId={entry.moment.episodeId}
+          />
           <DialogueLine
             line={entry.lineAfter}
             episodeId={entry.moment.episodeId}
