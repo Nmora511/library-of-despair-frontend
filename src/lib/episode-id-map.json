@@ -1,0 +1,29 @@
+{
+  "aop_01": {
+    "name": "Ordem Paranormal RPG - Epis\u00f3dio 1",
+    "seasonId": "aop"
+  },
+  "aop_02": {
+    "name": "Ordem Paranormal RPG - Epis\u00f3dio 2",
+    "seasonId": "aop"
+  },
+  "aop_03": {
+    "name": "Ordem Paranormal RPG - Epis\u00f3dio Final",
+    "seasonId": "aop"
+  },
+  "osnf_01": { "name": "Equipe Kelvin", "seasonId": "osnf" },
+  "osnf_03": { "name": "Aracnofobia", "seasonId": "osnf" },
+  "osnf_04": { "name": "Despedida", "seasonId": "osnf" },
+  "osnf_05": { "name": "A Casa", "seasonId": "osnf" },
+  "osnf_06": { "name": "Virgulino", "seasonId": "osnf" },
+  "osnf_07": { "name": "Cemit\u00e9rio", "seasonId": "osnf" },
+  "osnf_08": { "name": "O Segredo", "seasonId": "osnf" },
+  "osnf_09": { "name": "Santo Ber\u00e7o", "seasonId": "osnf" },
+  "osnf_10": { "name": "Hotel", "seasonId": "osnf" },
+  "osnf_11": { "name": "S\u00edmbolo", "seasonId": "osnf" },
+  "osnf_12": { "name": "Torre", "seasonId": "osnf" },
+  "osnf_13": { "name": "A Caverna", "seasonId": "osnf" },
+  "osnf_14": { "name": "A Porta", "seasonId": "osnf" },
+  "osnf_15": { "name": "Manancial", "seasonId": "osnf" },
+  "osnf_16": { "name": "Equipe E", "seasonId": "osnf" }
+}
