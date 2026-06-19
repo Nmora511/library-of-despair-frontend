@@ -1,5 +1,9 @@
 {
-  "thiago_fritz": { "name": "Thiago Fritz", "imageUrl": "", "color": "" },
+  "thiago_fritz": {
+    "name": "Thiago Fritz",
+    "imageUrl": "thiago_fritz.jpg",
+    "color": ""
+  },
   "elizabeth_webber": {
     "name": "Elizabeth Webber",
     "imageUrl": "",
@@ -27,16 +31,16 @@
   "gregorio": { "name": "Greg\u00f3rio", "imageUrl": "", "color": "" },
   "gauderios": { "name": "Gaud\u00e9rios", "imageUrl": "", "color": "" },
   "mestre": { "name": "Cellbit", "imageUrl": "", "color": "" },
-  "gabi": { "name": "Gabriela Cattuzo", "imageUrl": "", "color": "" },
+  "gabi": { "name": "Gabriela Cattuzo", "imageUrl": "gabi.jpg", "color": "" },
   "guaxinim": { "name": "Guaxinim", "imageUrl": "", "color": "" },
-  "luba": { "name": "Luba", "imageUrl": "", "color": "" },
+  "luba": { "name": "Luba", "imageUrl": "luba.jpg", "color": "" },
   "luis": { "name": "Luis", "imageUrl": "", "color": "" },
-  "rakin": { "name": "Rakin", "imageUrl": "", "color": "" },
+  "rakin": { "name": "Rakin", "imageUrl": "rakin.webp", "color": "" },
   "calango": { "name": "Calango", "imageUrl": "", "color": "" },
   "daniel_hartmann": { "name": "Daniel Hartmann", "imageUrl": "", "color": "" },
   "alexsander_kothe": {
     "name": "Alexsander Kothe",
-    "imageUrl": "",
+    "imageUrl": "alexsander_kothe.jpg",
     "color": ""
   },
   "walter": { "name": "Walter", "imageUrl": "", "color": "" },
