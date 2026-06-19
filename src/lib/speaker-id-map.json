@@ -6,14 +6,14 @@
   },
   "elizabeth_webber": {
     "name": "Elizabeth Webber",
-    "imageUrl": "",
+    "imageUrl": "elizabeth.webp",
     "color": ""
   },
   "ordo_realitas": { "name": "Ordo Realitas", "imageUrl": "", "color": "" },
   "sr_verissimo": { "name": "Sr. Ver\u00edssimo", "imageUrl": "", "color": "" },
-  "joui_jouki": { "name": "Joui", "imageUrl": "", "color": "" },
-  "cristopher_cohen": { "name": "Cristopher", "imageUrl": "", "color": "" },
-  "cesar_cohen": { "name": "Cesar", "imageUrl": "", "color": "" },
+  "joui_jouki": { "name": "Joui", "imageUrl": "joui.webp", "color": "" },
+  "cristopher_cohen": { "name": "Cristopher", "imageUrl": "cristopher.webp", "color": "" },
+  "cesar_cohen": { "name": "Cesar", "imageUrl": "cesar.webp", "color": "" },
   "victor_rott": { "name": "Victor Rott", "imageUrl": "", "color": "" },
   "ivete_beicur": { "name": "Ivete Beicur", "imageUrl": "", "color": "" },
   "receptionista_1": { "name": "Recepcionista 1", "imageUrl": "", "color": "" },
@@ -30,11 +30,11 @@
   "brulio": { "name": "Br\u00falio", "imageUrl": "", "color": "" },
   "gregorio": { "name": "Greg\u00f3rio", "imageUrl": "", "color": "" },
   "gauderios": { "name": "Gaud\u00e9rios", "imageUrl": "", "color": "" },
-  "mestre": { "name": "Cellbit", "imageUrl": "", "color": "" },
+  "mestre": { "name": "Cellbit", "imageUrl": "cellbit.webp", "color": "" },
   "gabi": { "name": "Gabriela Cattuzo", "imageUrl": "gabi.jpg", "color": "" },
-  "guaxinim": { "name": "Guaxinim", "imageUrl": "", "color": "" },
+  "guaxinim": { "name": "Guaxinim", "imageUrl": "guaxinim.webp", "color": "" },
   "luba": { "name": "Luba", "imageUrl": "luba.jpg", "color": "" },
-  "luis": { "name": "Luis", "imageUrl": "", "color": "" },
+  "luis": { "name": "Luis", "imageUrl": "luis.webp", "color": "" },
   "rakin": { "name": "Rakin", "imageUrl": "rakin.webp", "color": "" },
   "calango": { "name": "Calango", "imageUrl": "", "color": "" },
   "daniel_hartmann": { "name": "Daniel Hartmann", "imageUrl": "", "color": "" },
@@ -54,5 +54,5 @@
   "gabriel_opspor": { "name": "Gabriel Opspor", "imageUrl": "", "color": "" },
   "alvaro_augusto": { "name": "\u00c1lvaro", "imageUrl": "", "color": "" },
   "leticio": { "name": "Leticio", "imageUrl": "", "color": "" },
-  "cellbit": { "name": "Cellbit", "imageUrl": "", "color": "" }
+  "cellbit": { "name": "Cellbit", "imageUrl": "cellbit.webp", "color": "" }
 }
