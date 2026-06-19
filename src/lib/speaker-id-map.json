@@ -27,7 +27,7 @@
     "color": ""
   },
   "atendente": { "name": "Atendente", "imageUrl": "", "color": "" },
-  "brulio": { "name": "Br\u00falio", "imageUrl": "", "color": "" },
+  "brulio": { "name": "Br\u00falio", "imageUrl": "brulio.jpg", "color": "" },
   "gregorio": { "name": "Greg\u00f3rio", "imageUrl": "", "color": "" },
   "gauderios": { "name": "Gaud\u00e9rios", "imageUrl": "", "color": "" },
   "mestre": { "name": "Cellbit", "imageUrl": "cellbit.webp", "color": "" },
