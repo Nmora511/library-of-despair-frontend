@@ -9,6 +9,8 @@
     --accent: #8e52be;
     --modal-primary: #d66b00;
     --dark-modal-primary: #a85502;
+    --popover: #171717;
+    --hover-popover: #262626;
 }
 
 @theme inline {
