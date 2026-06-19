@@ -75,7 +75,7 @@ export default function ReportModal({
           </ToolTip>
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-sm bg-background animate-in zoom-in-90 duration-200 border-(--modal-primary) border shadow-[0_0_50px_rgba(214,107,0,0.75)]">
+      <DialogContent className="sm:max-w-sm bg-background border-(--modal-primary) border shadow-[0_0_50px_rgba(214,107,0,0.75)]">
         <form className="space-y-4" onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle className="font-bold text-(--modal-primary)">
