@@ -159,7 +159,7 @@ export default function FilterDropdown() {
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
                 <Command className="max-w-sm rounded-lg">
-                  <CommandInput placeholder="Digite o nome da temporada..." />
+                  <CommandInput placeholder="Digite o nome do locutor..." />
                   <CommandList>
                     <CommandEmpty className="text-(--primary)">
                       Nenhum Resultado Encontrado.
