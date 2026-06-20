@@ -7,4 +7,6 @@ const api = axios.create({
   },
 });
 
+api.defaults.timeout = 4130;
+
 export default api;
