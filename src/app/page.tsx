@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import SearchEntry from "@/components/searchEntry";
 import { SearchEntryData } from "@/types/apiTypes";
 import Image from "next/image";
 import SearchBar from "@/components/searchBar";
@@ -11,6 +10,7 @@ import { Filter, FilterType } from "@/types/filtersTypes";
 import { SearchFiltersContext } from "@/context/SearchFiltersContext";
 import SearchFiltersBoxes from "@/components/searchFiltersBoxes";
 import LoadingAnimation from "@/components/loadingAnimation";
+import SearchEntriesBox from "@/components/searchEntriesBox";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -144,13 +144,18 @@ export default function Home() {
               <h1 className="w-full border-b border-foreground font-bold">
                 Respostas
               </h1>
-              <ul className="flex flex-col gap-2">
-                {searchEntries
-                  .slice((currentPage - 1) * 10, currentPage * 10)
-                  .map((item, index) => (
-                    <SearchEntry entry={item} key={index} />
-                  ))}
-              </ul>
+              {searchEntries.length > 0 ? (
+                <SearchEntriesBox
+                  searchEntries={searchEntries}
+                  currentPage={currentPage}
+                />
+              ) : (
+                <div className="flex flex-1 items-center justify-center w-full h-full min-h-[50vh]">
+                  <h1 className="text-3xl opacity-60">
+                    Nenhum Resultado Foi Encontrado Para a Busca
+                  </h1>
+                </div>
+              )}
             </div>
           ))}
         <footer className="flex justify-center items-center gap-2 p-5">

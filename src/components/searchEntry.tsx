@@ -4,11 +4,32 @@ import DialogueLine from "./dialogueLine";
 import { SearchEntryData } from "@/types/apiTypes";
 import YoutubePreview from "./youtubePreview";
 import rawSpeakerIdMap from "@/lib/speaker-id-map.json";
+import rawEpisodeIdMap from "@/lib/episode-id-map.json";
 import { timeStringFormatter } from "@/utils/stringFormatter";
 import { useEffect, useState } from "react";
-import { SpeakerIdMapItem } from "@/types/mapTypes";
+import { SpeakerIdMapItem, EpisodeIdMapItem } from "@/types/mapTypes";
+import { motion, Variants } from "framer-motion";
 
 const speakerIdMap = rawSpeakerIdMap as Record<string, SpeakerIdMapItem>;
+const episodeIdMap = rawEpisodeIdMap as Record<string, EpisodeIdMapItem>;
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, boxShadow: "none" },
+  visible: {
+    opacity: [0, 1, 1],
+    boxShadow: [
+      "0 0 0px rgba(214,171,0,0)",
+      "0 0 50px 10px rgba(214,171,0,0.8)",
+      "0 0 0px rgba(214,171,0,0)",
+    ],
+    transition: {
+      duration: 0.6,
+      times: [0, 0.5, 1],
+      ease: "easeInOut",
+    },
+  },
+  exit: { scale: 0, opacity: 0 },
+};
 
 export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
   const defaultPhotoPath: string = "/speakers/unknown.png";
@@ -31,7 +52,6 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
       .then((res) => {
         if (res.ok) {
           setFilePath(path);
-          console.log("Carregou: " + path);
         } else {
           setFilePath(defaultPhotoPath);
         }
@@ -40,7 +60,10 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
   }, [entry]);
 
   return (
-    <li className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--primary) border-[0.3rem] rounded-lg">
+    <motion.li
+      variants={itemVariants}
+      className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--primary) border-[0.3rem] rounded-lg"
+    >
       <div className="relative h-full w-45 border-(--primary) border-r-[0.3rem] shrink-0 overflow-hidden">
         <Image
           className="object-cover"
@@ -78,7 +101,8 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
           <div className="flex">
             <p className="font-bold text-(--primary)">Episódio:</p>
             <p>
-              &nbsp;{entry.moment.episodeName} - #{entry.moment.episodeNumber}
+              &nbsp;{episodeIdMap[entry.moment.episodeId].name} - #
+              {entry.moment.episodeNumber}
             </p>
             <p className="font-bold ml-3 text-(--primary)">Momento:</p>
             <p>
@@ -92,6 +116,6 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
           />
         </div>
       </div>
-    </li>
+    </motion.li>
   );
 }
