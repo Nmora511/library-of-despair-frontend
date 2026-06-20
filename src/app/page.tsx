@@ -50,13 +50,12 @@ export default function Home() {
     try {
       const response: AxiosResponse<SearchEntryData[]> =
         await api.get(queryPath);
-      // setSearchEntries(response.data);
+      setSearchEntries(response.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsSearchLoading(false);
     }
-    // finally {
-    //   setIsSearchLoading(false);
-    // }
   };
 
   const handleUpdateSearchFilters = (newFilters: Filter[]) => {
@@ -116,6 +115,7 @@ export default function Home() {
               alt="mascara do desespero icon"
               src={"/mascara_desespero.webp"}
               loading="eager"
+              className="h-auto w-auto object-contain"
             />
             {isFirstQuery && (
               <section className="flex flex-col">
