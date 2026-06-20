@@ -9,8 +9,8 @@
     "imageUrl": "elizabeth.webp",
     "color": "#16a34a"
   },
-  "ordo_realitas": { "name": "Ordo Realitas", "imageUrl": "", "color": "" },
-  "sr_verissimo": { "name": "Sr. Veríssimo", "imageUrl": "", "color": "" },
+  "ordo_realitas": { "name": "Ordo Realitas", "imageUrl": "ordo_realitas.webp", "color": "" },
+  "sr_verissimo": { "name": "Sr. Veríssimo", "imageUrl": "verissimo.webp", "color": "" },
   "joui_jouki": { "name": "Joui", "imageUrl": "joui.webp", "color": "" },
   "cristopher_cohen": {
     "name": "Cristopher",
@@ -18,7 +18,7 @@
     "color": ""
   },
   "cesar_cohen": { "name": "Cesar", "imageUrl": "cesar.webp", "color": "" },
-  "victor_rott": { "name": "Victor Rott", "imageUrl": "", "color": "" },
+  "victor_rott": { "name": "Victor Rott", "imageUrl": "victor_rott.webp", "color": "" },
   "ivete_beicur": {
     "name": "Ivete Beicur",
     "imageUrl": "ivete.webp",
@@ -36,8 +36,8 @@
   },
   "atendente": { "name": "Atendente", "imageUrl": "", "color": "" },
   "brulio": { "name": "Brúlio", "imageUrl": "brulio.jpg", "color": "" },
-  "gregorio": { "name": "Gregório", "imageUrl": "", "color": "" },
-  "gauderios": { "name": "Gaudérios", "imageUrl": "", "color": "" },
+  "gregorio": { "name": "Gregório", "imageUrl": "gregorio.webp", "color": "" },
+  "gauderios": { "name": "Gaudérios", "imageUrl": "gauderios.webp", "color": "" },
   "mestre": {
     "name": "Cellbit",
     "imageUrl": "mestre.png",
@@ -48,7 +48,7 @@
   "luba": { "name": "Luba", "imageUrl": "luba.jpg", "color": "" },
   "luis": { "name": "Luis", "imageUrl": "luis.webp", "color": "" },
   "rakin": { "name": "Rakin", "imageUrl": "rakin.webp", "color": "" },
-  "calango": { "name": "Calango", "imageUrl": "", "color": "" },
+  "calango": { "name": "Calango", "imageUrl": "calango.webp", "color": "" },
   "daniel_hartmann": {
     "name": "Daniel Hartmann",
     "imageUrl": "",
@@ -59,16 +59,16 @@
     "imageUrl": "alexsander_kothe.jpg",
     "color": "#facc15"
   },
-  "walter": { "name": "Walter", "imageUrl": "", "color": "" },
-  "gonzales": { "name": "Gonzales Medina", "imageUrl": "", "color": "" },
-  "wesleynardo": { "name": "Wesleynardo", "imageUrl": "", "color": "" },
-  "elizabella": { "name": "Elizabella", "imageUrl": "", "color": "" },
-  "victoria_opspor": { "name": "Victoria Opspor", "imageUrl": "", "color": "" },
-  "matheus": { "name": "Matheus", "imageUrl": "", "color": "" },
+  "walter": { "name": "Walter", "imageUrl": "walter.webp", "color": "" },
+  "gonzales": { "name": "Gonzales Medina", "imageUrl": "gonzales.webp", "color": "" },
+  "wesleynardo": { "name": "Wesleynardo", "imageUrl": "wesleynardo.webp", "color": "" },
+  "elizabella": { "name": "Elizabella", "imageUrl": "elizabellabela.webp", "color": "" },
+  "victoria_opspor": { "name": "Victoria Opspor", "imageUrl": "victoria_opspor.webp", "color": "" },
+  "matheus": { "name": "Matheus", "imageUrl": "matheus.webp", "color": "" },
   "geraldo_schmia": { "name": "Geraldo Schmia", "imageUrl": "", "color": "" },
-  "olavo": { "name": "Olavo", "imageUrl": "", "color": "" },
-  "gabriel_opspor": { "name": "Gabriel Opspor", "imageUrl": "", "color": "" },
-  "alvaro_augusto": { "name": "Álvaro", "imageUrl": "", "color": "" },
+  "olavo": { "name": "Olavo", "imageUrl": "olavo.webp", "color": "" },
+  "gabriel_opspor": { "name": "Gabriel Opspor", "imageUrl": "gabriel.webp", "color": "" },
+  "alvaro_augusto": { "name": "Álvaro", "imageUrl": "alvaro.webp", "color": "" },
   "leticio": { "name": "Leticio", "imageUrl": "", "color": "" },
   "cellbit": {
     "name": "Cellbit",
