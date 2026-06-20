@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { Filter, FilterType } from "@/types/filtersTypes";
 import { SearchFiltersContext } from "@/context/SearchFiltersContext";
 import SearchFiltersBoxes from "@/components/searchFiltersBoxes";
+import LoadingAnimation from "@/components/loadingAnimation";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -17,6 +18,7 @@ export default function Home() {
     [],
   );
   const [searchFilters, setSearchFilters] = useState<Array<Filter>>([]);
+  const [isFirstQuery, setIsFirstQuery] = useState<boolean>(true);
   const [isSearchLoading, setIsSearchLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -48,11 +50,13 @@ export default function Home() {
     try {
       const response: AxiosResponse<SearchEntryData[]> =
         await api.get(queryPath);
-      setIsSearchLoading(false);
-      setSearchEntries(response.data);
+      // setSearchEntries(response.data);
     } catch (error) {
       console.log(error);
     }
+    // finally {
+    //   setIsSearchLoading(false);
+    // }
   };
 
   const handleUpdateSearchFilters = (newFilters: Filter[]) => {
@@ -61,6 +65,10 @@ export default function Home() {
   };
 
   const handleUpdateSearchText = (newValue: string) => {
+    if (isFirstQuery && newValue !== "") {
+      setIsFirstQuery(false);
+    }
+
     setSearchText(newValue);
 
     if (newValue.trim() === "") {
@@ -89,18 +97,34 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col flex-1 gap-0 items-center font-sans w-full h-full">
+    <motion.main
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      className={`flex flex-col flex-1 gap-0 items-center font-sans w-full h-full ${isFirstQuery ? "justify-center" : ""}`}
+    >
       <SearchFiltersContext.Provider
         value={{ searchFilters, handleUpdateSearchFilters }}
       >
-        <section className="flex items-center justify-center gap-4 w-[92%] h-full mt-6">
-          <Image
-            height={50}
-            width={50}
-            alt="mascara do desespero icon"
-            src={"/mascara_desespero.webp"}
-            loading="eager"
-          />
+        <motion.section
+          layout
+          transition={{ type: "spring", stiffness: 120, damping: 20 }}
+          className={`flex items-center justify-center h-full mt-6 ${isFirstQuery ? "w-[72%] flex-col gap-8" : "w-[92%] gap-4"}`}
+        >
+          <div className="flex items-center justify-center gap-3">
+            <Image
+              height={50}
+              width={50}
+              alt="mascara do desespero icon"
+              src={"/mascara_desespero.webp"}
+              loading="eager"
+            />
+            {isFirstQuery && (
+              <section className="flex flex-col">
+                <span className="text-4xl font-bold">BIBLIOTECA</span>
+                <span className="text-4xl font-bold">DO DESESPERO</span>
+                <span></span>
+              </section>
+            )}
+          </div>
           <div className="w-full">
             <SearchBar
               value={searchText}
@@ -108,20 +132,27 @@ export default function Home() {
               onChange={handleChange}
             />
           </div>
-        </section>
+        </motion.section>
         <SearchFiltersBoxes />
-        <div className="flex flex-col gap-3 h-full w-[92%] text-xl text-start mt-2">
-          <h1 className="w-full border-b border-foreground font-bold">
-            Respostas
-          </h1>
-          {isSearchLoading ? (
-            <p>Loading...</p>
+        {!isFirstQuery &&
+          (isSearchLoading ? (
+            <div className="flex flex-1 items-center justify-center w-full h-full min-h-[50vh]">
+              <LoadingAnimation />
+            </div>
           ) : (
-            searchEntries
-              .slice((currentPage - 1) * 10, currentPage * 10)
-              .map((item, index) => <SearchEntry entry={item} key={index} />)
-          )}
-        </div>
+            <div className="flex flex-col gap-3 h-full w-[92%] text-xl text-start mt-2">
+              <h1 className="w-full border-b border-foreground font-bold">
+                Respostas
+              </h1>
+              <ul className="flex flex-col gap-2">
+                {searchEntries
+                  .slice((currentPage - 1) * 10, currentPage * 10)
+                  .map((item, index) => (
+                    <SearchEntry entry={item} key={index} />
+                  ))}
+              </ul>
+            </div>
+          ))}
         <footer className="flex justify-center items-center gap-2 p-5">
           {searchEntries.length === 0 ? (
             <></>
@@ -142,6 +173,6 @@ export default function Home() {
           )}
         </footer>
       </SearchFiltersContext.Provider>
-    </main>
+    </motion.main>
   );
 }
