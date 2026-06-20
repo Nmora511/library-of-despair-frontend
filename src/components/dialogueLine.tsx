@@ -21,7 +21,7 @@ export default function DialogueLine({
 
   return (
     <div
-      className={`flex w-full py-3 font-bold ${isMainLine ? "opacity-100" : "opacity-60"}`}
+      className={`w-full py-3 font-bold ${isMainLine ? "opacity-100" : "opacity-60"}`}
     >
       {line.speakers.map((speaker, index) => {
         const currentSpeakerItem = speakerIdMap[speaker.id];

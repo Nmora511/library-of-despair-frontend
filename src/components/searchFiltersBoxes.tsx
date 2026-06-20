@@ -10,7 +10,6 @@ import { useContext } from "react";
 import ToolTip from "./toolTip";
 import { AnimatePresence, motion } from "framer-motion";
 import { RiCloseLargeLine } from "react-icons/ri";
-import { Scale } from "lucide-react";
 
 export default function SearchFiltersBoxes() {
   const context = useContext(SearchFiltersContext);
@@ -31,6 +30,7 @@ export default function SearchFiltersBoxes() {
       <AnimatePresence>
         {searchFilters.map((filter) => {
           let displayName: string;
+          let backgroundCssProperty: string;
           switch (filter.filterType) {
             case FilterType.Episode: {
               const currentMap = filterTypeToMap[filter.filterType];
@@ -39,6 +39,7 @@ export default function SearchFiltersBoxes() {
                 : null;
 
               displayName = mapItem ? mapItem.name : filter.value;
+              backgroundCssProperty = "--episode-background";
               break;
             }
 
@@ -49,6 +50,7 @@ export default function SearchFiltersBoxes() {
                 : null;
 
               displayName = mapItem ? mapItem : filter.value;
+              backgroundCssProperty = "--season-background";
               break;
             }
 
@@ -59,14 +61,18 @@ export default function SearchFiltersBoxes() {
                 : null;
 
               displayName = mapItem ? mapItem.name : filter.value;
+              backgroundCssProperty = "--speaker-background";
               break;
             }
           }
 
+          backgroundCssProperty = `var(${backgroundCssProperty})`;
+
           return (
             <motion.li
               key={filter.filterType}
-              className="flex items-center justify-center gap-2 bg-(--primary) p-3 px-4 rounded-full text-md"
+              className="flex items-center justify-center gap-2 p-3 px-4 rounded-full text-black text-md"
+              style={{ backgroundColor: backgroundCssProperty }}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}

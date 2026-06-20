@@ -11,6 +11,9 @@
     --dark-modal-primary: #a85502;
     --popover: #171717;
     --hover-popover: #262626;
+    --speaker-background: #dbccf4;
+    --episode-background: #ccb984;
+    --season-background: #92bfb8;
 }
 
 @theme inline {
