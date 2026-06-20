@@ -40,7 +40,7 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
   }, [entry]);
 
   return (
-    <div className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--primary) border-[0.3rem] rounded-lg">
+    <li className="relative flex items-center w-full min-h-45 h-68 bg-background border-(--primary) border-[0.3rem] rounded-lg">
       <div className="relative h-full w-45 border-(--primary) border-r-[0.3rem] shrink-0 overflow-hidden">
         <Image
           className="object-cover"
@@ -92,6 +92,6 @@ export default function SearchEntry({ entry }: { entry: SearchEntryData }) {
           />
         </div>
       </div>
-    </div>
+    </li>
   );
 }
