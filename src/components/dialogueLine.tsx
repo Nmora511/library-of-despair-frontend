@@ -2,7 +2,11 @@
 
 import { DialogueLineData } from "@/types/apiTypes";
 import { capitalizeFirstLetter } from "@/utils/stringFormatter";
+import rawSpeakerIdMap from "@/lib/speaker-id-map.json";
 import ReportModal from "./reportModal";
+import { SpeakerIdMapItem } from "@/types/mapTypes";
+
+const speakerIdMap = rawSpeakerIdMap as Record<string, SpeakerIdMapItem>;
 
 export default function DialogueLine({
   line,
@@ -11,17 +15,6 @@ export default function DialogueLine({
 }: {
   line: DialogueLineData;
 } & { episodeId: string; isMainLine?: boolean }) {
-  const nameColorPerCharacterName: Record<string, string> = {
-    Agatha: "text-red-800",
-    Arthur: "text-[#09fd44]",
-    thiago_fritz: "text-orange-700",
-    daniel_hartmann: "text-blue-700",
-    elizabeth_webber: "text-green-600",
-    alexsander_kothe: "text-yellow-400",
-    mestre: "text-white",
-    default: "text-yellow-700",
-  };
-
   if (!line) {
     return <></>;
   }
@@ -30,25 +23,27 @@ export default function DialogueLine({
     <div
       className={`flex w-full py-3 font-bold ${isMainLine ? "opacity-100" : "opacity-60"}`}
     >
-      {line.speakers.map((item, index) => {
-        const textColorCss: string =
-          item.id in nameColorPerCharacterName
-            ? nameColorPerCharacterName[item.id]
-            : nameColorPerCharacterName["default"];
+      {line.speakers.map((speaker, index) => {
+        const currentSpeakerItem = speakerIdMap[speaker.id];
+        let textHexColor: string = currentSpeakerItem?.color;
 
-        item.name = capitalizeFirstLetter(item.name);
+        if (!textHexColor || textHexColor === "") {
+          textHexColor = "#d6ab00";
+        }
+
+        speaker.name = capitalizeFirstLetter(speaker.name);
 
         if (index > 0) {
-          item.name = `, ${item.name}`;
+          speaker.name = `, ${speaker.name}`;
         }
 
         return (
-          <span key={index} className={textColorCss}>
-            {item.name}
+          <span key={index}>
+            <span style={{ color: textHexColor }}>{speaker.name}</span>
+            {index === line.speakers.length - 1 && <span>:&nbsp;</span>}
           </span>
         );
       })}
-      <span>:&nbsp;</span>
       <span className="font-normal">{capitalizeFirstLetter(line.text)}</span>
       <ReportModal lineNumber={line.number} episodeId={episodeId} />
     </div>
