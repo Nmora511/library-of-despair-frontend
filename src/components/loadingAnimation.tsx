@@ -8,7 +8,7 @@ export default function LoadingAnimation() {
     animate: {
       transition: {
         staggerChildren: 0.5,
-        delayChildren: 0.4,
+        delayChildren: 0.1,
       },
     },
   };
