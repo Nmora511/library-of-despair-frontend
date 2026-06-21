@@ -41,7 +41,7 @@ export default function FilterDropdown() {
   const context = useContext(SearchFiltersContext);
   if (!context) return null;
 
-  const { searchFilters, handleUpdateSearchFilters } = context;
+  const { searchFilters, setSearchFilters } = context;
 
   const currentSeasonFilter = searchFilters.find(
     (f) => f.filterType === FilterType.Season,
@@ -57,11 +57,11 @@ export default function FilterDropdown() {
     const cleanedArray = searchFilters.filter((f) => f.filterType !== type);
 
     if (value) {
-      handleUpdateSearchFilters([...cleanedArray, { filterType: type, value }]);
+      setSearchFilters([...cleanedArray, { filterType: type, value }]);
       return;
     }
 
-    handleUpdateSearchFilters(cleanedArray);
+    setSearchFilters(cleanedArray);
   };
 
   return (

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchEntryData } from "@/types/apiTypes";
 import Image from "next/image";
 import SearchBar from "@/components/searchBar";
@@ -22,46 +22,44 @@ export default function Home() {
   const [isSearchLoading, setIsSearchLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const startSearchQuery = async (
-    queryText: string,
-    queryFilters: Filter[],
-  ) => {
-    setCurrentPage(1);
-    setIsSearchLoading(true);
+  useEffect(() => {
+    if (searchText.trim() === "") {
+      return;
+    }
 
-    let queryPath: string = `/line?query=${queryText}`;
+    const startSearchQuery = async () => {
+      setCurrentPage(1);
+      setIsSearchLoading(true);
 
-    for (const filter of queryFilters) {
-      switch (filter.filterType) {
-        case FilterType.Episode: {
-          queryPath += `&episode=${filter.value}`;
-          break;
-        }
-        case FilterType.Season: {
-          queryPath += `&season=${filter.value}`;
-          break;
-        }
-        case FilterType.Speaker: {
-          queryPath += `&speaker=${filter.value}`;
-          break;
+      let queryPath: string = `/line?query=${searchText}`;
+
+      for (const filter of searchFilters) {
+        switch (filter.filterType) {
+          case FilterType.Episode:
+            queryPath += `&episode=${filter.value}`;
+            break;
+          case FilterType.Season:
+            queryPath += `&season=${filter.value}`;
+            break;
+          case FilterType.Speaker:
+            queryPath += `&speaker=${filter.value}`;
+            break;
         }
       }
-    }
-    try {
-      const response: AxiosResponse<SearchEntryData[]> =
-        await api.get(queryPath);
-      setSearchEntries(response.data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsSearchLoading(false);
-    }
-  };
 
-  const handleUpdateSearchFilters = (newFilters: Filter[]) => {
-    setSearchFilters(newFilters);
-    startSearchQuery(searchText, newFilters);
-  };
+      try {
+        const response: AxiosResponse<SearchEntryData[]> =
+          await api.get(queryPath);
+        setSearchEntries(response.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsSearchLoading(false);
+      }
+    };
+
+    startSearchQuery();
+  }, [searchText, searchFilters]);
 
   const handleUpdateSearchText = (newValue: string) => {
     if (isFirstQuery && newValue !== "") {
@@ -78,12 +76,6 @@ export default function Home() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const nextText = e.target.value;
     handleUpdateSearchText(nextText);
-
-    if (nextText.trim() === "") {
-      return;
-    }
-
-    startSearchQuery(nextText, searchFilters);
   };
 
   const scrollToTop = () => {
@@ -101,7 +93,7 @@ export default function Home() {
       className={`flex flex-col flex-1 gap-0 items-center font-sans w-full h-full ${isFirstQuery ? "justify-center" : ""}`}
     >
       <SearchFiltersContext.Provider
-        value={{ searchFilters, handleUpdateSearchFilters }}
+        value={{ searchFilters, setSearchFilters }}
       >
         <motion.section
           layout

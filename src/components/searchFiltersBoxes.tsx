@@ -15,14 +15,14 @@ export default function SearchFiltersBoxes() {
   const context = useContext(SearchFiltersContext);
   if (!context) return null;
 
-  const { searchFilters, handleUpdateSearchFilters } = context;
+  const { searchFilters, setSearchFilters } = context;
   const MotionCloseIcon = motion.create(RiCloseLargeLine);
 
   const handleRemoveFilter = (thisFilter: Filter) => {
     const newFilters = searchFilters.filter(
       (prevFilter) => prevFilter !== thisFilter,
     );
-    handleUpdateSearchFilters(newFilters);
+    setSearchFilters(newFilters);
   };
 
   return (
